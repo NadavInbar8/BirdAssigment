@@ -1,16 +1,17 @@
 import { useState,useEffect } from "react";
 import Bird from '../Bird-Page/bird';
+import useBreedList from "../useBreedList/useBreedList";
 import './land.scss';
 
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
-const BREEDS = [];
 
 const SearchParams = () => {
     const [location, setLocation] = useState("");
     const [animal, setAnimal] = useState("dog");
     const [breed, setBreed] = useState("");
     const [pets, setPets] = useState([]);
+    const [breeds] = useBreedList(animal);
 
 
     useEffect( () => {
@@ -51,7 +52,7 @@ const SearchParams = () => {
                 Breeds
                 <select id="breed" value={breed} onChange={e => setBreed(e.target.value)} onBlur={e => setBreed(e.target.value)}>
                     <option />
-                       {BREEDS.map(breed => (
+                       {breeds.map((breed) => (
                             <option value={breed} key={breed}>
                                 {breed}
                             </option>
@@ -62,7 +63,11 @@ const SearchParams = () => {
          </form>
          {
             pets.map(pet => (
-                <Bird name={pet.name} animal={pet.animal} breed={pet.breed} key={pet.id} />
+                <Bird 
+                name={pet.name} 
+                animal={pet.animal} 
+                breed={pet.breed} 
+                key={pet.id} />
             ))
          }
         </div>
