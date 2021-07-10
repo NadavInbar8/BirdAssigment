@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Bird = ({
+const Pet = ({
   name,
   animal,
   breed,
@@ -16,7 +17,7 @@ const Bird = ({
 
     return (
       <div>
-        <a href={`/details/${id}`} className="pet">
+        <Link to={`/details/${id}`} className="pet">
           <div className="image-container">
             <img src={hero} alt={name} /> 
           </div>
@@ -25,9 +26,9 @@ const Bird = ({
             <h2> {`${animal} - ${breed} - ${location}`} </h2>
 
           </div>
-        </a>
+        </Link>
       </div>
     );
 };
 
-export default Bird;
+export default Pet;
