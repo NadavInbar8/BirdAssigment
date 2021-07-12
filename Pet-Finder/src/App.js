@@ -10,13 +10,14 @@ import ThemeContext from './Components/ThemeContext/themeContext';
 function App() {
 const theme = useState("pink");
 
+
 return(
   <ThemeContext.Provider value={theme}>
     <div className="App">
           <Router>
         <header className="header">
           <Link to="/">
-            <h1> Pet Finder!</h1>
+            <h1 className="siteHeadline"> Pet Finder!</h1>
           </Link>
         </header>
             <Switch>
